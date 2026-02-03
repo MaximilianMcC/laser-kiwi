@@ -10,7 +10,7 @@ class Kiwi : GameObject
 
 	public Kiwi()
 	{
-		texture = Raylib.LoadTexture("./assets/kiwi.png");
+		texture = AssetManager.LoadTexture("./assets/kiwi.png");
 	}
 
 	public override void Update()

@@ -13,6 +13,7 @@ class Program
 			scene.Update();
 
 			Raylib.BeginDrawing();
+			TextDrawer.BeginDrawing();
 			Raylib.ClearBackground(Color.Black);
 			scene.Render();
 			Raylib.EndDrawing();
