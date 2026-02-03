@@ -20,26 +20,26 @@ abstract class Scene
 
 		Populate();
 
-		foreach (GameObject gameObject in GameObjects)
+		for (int i = 0; i < GameObjects.Count; i++)
 		{
-			gameObject.Start();
-		}	
+			GameObjects[i].Start();
+		}
 	}
 
 	public void Update()
 	{
-		foreach (GameObject gameObject in GameObjects)
+		for (int i = GameObjects.Count - 1; i >= 0 ; i--)
 		{
-			gameObject.Update();
+			GameObjects[i].Update();
 		}
 	}
 
 	public void Render()
 	{
 		Camera.Begin();
-		foreach (GameObject gameObject in GameObjects)
+		for (int i = GameObjects.Count - 1; i >= 0 ; i--)
 		{
-			gameObject.Draw();
+			GameObjects[i].Draw();
 		}
 		Camera.End();
 	}
