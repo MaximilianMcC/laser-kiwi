@@ -10,4 +10,11 @@ class GameObject
 	public virtual void Update() { }
 	public virtual void Draw() { }
 	public virtual void CleanUp() { }
+
+	protected void KillMySelf() => Destroy();
+	public void Destroy()
+	{
+		SceneManager.Scene.GameObjects.Remove(this);
+		CleanUp();
+	}
 }
