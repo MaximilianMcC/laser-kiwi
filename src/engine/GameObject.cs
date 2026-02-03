@@ -1,17 +1,9 @@
 class GameObject
 {
-	public virtual void Update()
-	{
-		
-	}
+	// private GameObject() { }
 
-	public virtual void Draw()
-	{
-		
-	}
-
-	public virtual void CleanUp()
-	{
-		
-	}
+	public virtual void Start() { }
+	public virtual void Update() { }
+	public virtual void Draw() { }
+	public virtual void CleanUp() { }
 }

@@ -1,7 +1,7 @@
 class TestScene : Scene
 {
-	public TestScene()
+	public override void Populate()
 	{
-		gameObjects.Add(new Kiwi());
+		GameObjects.Add(new Kiwi());
 	}
 }

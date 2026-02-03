@@ -6,20 +6,21 @@ class Program
 	{
 		Raylib.InitWindow(512, 512, "laser kiwi");
 
-		Scene scene = new TestScene();
+		SceneManager.Scene = new TestScene();
+		SceneManager.Scene.Start();
 
 		while (!Raylib.WindowShouldClose())
 		{
-			scene.Update();
+			SceneManager.Scene.Update();
 
 			Raylib.BeginDrawing();
 			TextDrawer.BeginDrawing();
 			Raylib.ClearBackground(Color.Black);
-			scene.Render();
+			SceneManager.Scene.Render();
 			Raylib.EndDrawing();
 		}
 
-		scene.CleanUp();
+		SceneManager.Scene.CleanUp();
 		Raylib.CloseWindow();
 	}
 }

@@ -20,6 +20,18 @@ static class Graphics
 		);
 	}
 
+	public static void DrawTexture(Texture2D texture, Rectangle rectangle)
+	{
+		Raylib.DrawTexturePro(
+			texture,
+			GetTextureRectangle(texture),
+			rectangle,
+			Vector2.Zero,
+			0f,
+			Color.White
+		);
+	}
+
 	public static void DrawCentreText(string text, float fontSize)
 	{
 		Vector2 size = Raylib.MeasureTextEx(Raylib.GetFontDefault(), text, fontSize, fontSize / 10);

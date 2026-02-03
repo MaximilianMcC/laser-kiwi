@@ -4,19 +4,28 @@ using Raylib_cs;
 class Kiwi : GameObject
 {	
 	private Texture2D texture;
-	private Vector2 size = new Vector2(100, 75);
+	private Rectangle hitbox;
 
-	private Vector2 position;
-
-	public Kiwi()
+	public override void Start()
 	{
+		// Make the kiwi
 		texture = AssetManager.LoadTexture("./assets/kiwi.png");
+		hitbox = new Rectangle(0, 0, 100, 75);
+
+		// Make the camera
+		// TODO: Don't do this here
+		SceneManager.Scene.Camera = new Camera();
 	}
 
 	public override void Update()
 	{
-		// Raylib.DrawTexture(texture, 0, 0, Color.White);
-		Graphics.DrawTexture(texture, position, size);
+		
+	}
+
+	public override void Draw()
+	{
+		SceneManager.Scene.Camera.Position = hitbox.Position;
+		Graphics.DrawTexture(texture, hitbox);
 	}
 
 	public override void CleanUp()
