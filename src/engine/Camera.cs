@@ -6,6 +6,11 @@ class Camera
 	public Vector2 Position;
 	public float Rotation;
 
+	public void FocusOn(Rectangle thing)
+	{
+		Position = thing.Position + (thing.Size / 2);
+	}
+
 	public void Begin()
 	{
 		// TODO: Don't make a new one each time maybe

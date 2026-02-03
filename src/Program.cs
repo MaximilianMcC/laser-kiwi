@@ -4,7 +4,7 @@ class Program
 {
 	public static void Main(string[] args)
 	{
-		Raylib.InitWindow(512, 512, "laser kiwi");
+		Raylib.InitWindow(840, 512, "laser kiwi");
 
 		SceneManager.Scene = new TestScene();
 		SceneManager.Scene.Start();

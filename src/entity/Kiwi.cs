@@ -24,7 +24,7 @@ class Kiwi : GameObject
 
 	public override void Draw()
 	{
-		SceneManager.Scene.Camera.Position = hitbox.Position;
+		SceneManager.Scene.Camera.FocusOn(hitbox);
 		Graphics.DrawTexture(texture, hitbox);
 	}
 
