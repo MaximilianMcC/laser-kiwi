@@ -11,9 +11,11 @@ class Camera
 		// TODO: Don't make a new one each time maybe
 		Camera2D camera = new Camera2D()
 		{
-			Offset = Raylib.GetScreenCenter() / 2f,
+			// TODO: Use 0 offset
+			Offset = Raylib.GetScreenCenter(),
 			Target = Position,
-			Rotation = Rotation
+			Rotation = Rotation,
+			Zoom = 1
 		};
 
 		Raylib.BeginMode2D(camera);

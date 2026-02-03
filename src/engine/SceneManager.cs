@@ -15,8 +15,10 @@ abstract class Scene
 
 	public void Start()
 	{
-		// Make a default camera
+		// Make a default camera for if we forget one
 		Camera = new Camera();
+
+		Populate();
 
 		foreach (GameObject gameObject in GameObjects)
 		{
