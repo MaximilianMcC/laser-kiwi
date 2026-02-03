@@ -1,6 +1,10 @@
+using Raylib_cs;
+
 class GameObject
 {
 	// private GameObject() { }
+
+	public Rectangle Hitbox;
 
 	public virtual void Start() { }
 	public virtual void Update() { }
