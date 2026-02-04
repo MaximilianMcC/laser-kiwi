@@ -14,10 +14,14 @@ class Kiwi : Sprite
 	private Vector2 laserAngle;
 	public bool UsingLaserEyes = false;
 
+	private Animation animation;
+
 	public override void Start()
 	{
 		// Make the kiwi
 		InitSprite("./assets/kiwi.png", new Vector2(100, 75));
+
+		animation = new Animation("./assets/kiwi.png", 136, 5);
 	}
 
 	public override void Update()
@@ -33,8 +37,8 @@ class Kiwi : Sprite
 		// Move around
 		Vector2 movement = (Input.Get2DMovement() * speed) * Raylib.GetFrameTime();
 
-		if (Maths.MovingRight(movement)) facingRight = true;
-		if (Maths.MovingLeft(movement)) facingRight = false;
+		if (Maths.MovingRight(movement)) facingRight = !true;
+		if (Maths.MovingLeft(movement)) facingRight = !false;
 
 		// Add gravity
 		velocity.Y += gravity * Raylib.GetFrameTime();
@@ -54,7 +58,10 @@ class Kiwi : Sprite
 	public override void Draw()
 	{
 		// Draw the sprite
-		base.Draw();
+		// base.Draw();
+		animation.Animate();
+		Graphics.DrawTexture(animation.GetFrame(), Hitbox, !facingRight);
+		
 
 		// Draw the laser
 		float wobble = MathF.Sin((float)Raylib.GetTime() * 40f) * 2f;
@@ -94,5 +101,10 @@ class Kiwi : Sprite
 		{
 			laserAngle = Vector2.Normalize(Raylib.GetMousePosition() - GetLaserEyePosition());
 		}
+	}
+
+	public override void CleanUp()
+	{
+		animation.Unload();
 	}
 }
