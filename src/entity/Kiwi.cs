@@ -57,18 +57,22 @@ class Kiwi : Sprite
 		base.Draw();
 
 		// Draw the laser
-		Vector2 eyeOrigin = new Vector2(0.88f, 0.6f);
-		Vector2 laserStartPosition = Position + eyeOrigin * Size;
-
 		float wobble = MathF.Sin((float)Raylib.GetTime() * 40f) * 2f;
-		Vector2 laserEndPosition = laserStartPosition + laserAngle * (currentLaserLength + wobble);
+		Vector2 laserEndPosition = GetLaserEyePosition() + laserAngle * (currentLaserLength + wobble);
 
 		Raylib.DrawLineEx(
-			laserStartPosition,
+			GetLaserEyePosition(),
 			laserEndPosition,
 			2f,
 			Color.Green
 		);
+	}
+
+	private Vector2 GetLaserEyePosition()
+	{
+		Vector2 eyeOrigin = new Vector2(0.88f, 0.6f);
+		if (!facingRight) eyeOrigin.X = 1f - eyeOrigin.X;
+		return Position + eyeOrigin * Size;
 	}
 
 	private void LaserEyes()
@@ -88,9 +92,7 @@ class Kiwi : Sprite
 		// Get the new angle of the laser
 		if (UsingLaserEyes)
 		{
-			Vector2 eyeOrigin = new Vector2(0.88f, 0.6f);
-			Vector2 eyePosition = Position + eyeOrigin * Size;
-			laserAngle = Vector2.Normalize(Raylib.GetMousePosition() - eyePosition);
+			laserAngle = Vector2.Normalize(Raylib.GetMousePosition() - GetLaserEyePosition());
 		}
 	}
 }
