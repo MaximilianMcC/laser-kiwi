@@ -7,6 +7,9 @@ class GameObject
 	public Vector2 Position;
 	public Rectangle Hitbox => new Rectangle(Position, Size);
 
+	public virtual bool HasCollision => true;
+	public virtual bool CollisionBlocksMovement => false;
+
 	public virtual void Start() { }
 	public virtual void Update() { }
 	public virtual void Draw() { }
@@ -17,5 +20,28 @@ class GameObject
 	{
 		SceneManager.Scene.GameObjects.Remove(this);
 		CleanUp();
+	}
+
+	// TODO: Evaluate
+	// TODO: Make it return the new movement vector
+	protected void MoveWithCollision(Vector2 newMovement)
+	{
+		// Check for X collision
+		Position.X += newMovement.X;
+		GameObject xCollision = Collision.HitAnything(this);
+		if (xCollision?.CollisionBlocksMovement == true)
+		{
+			// If we hit something then undo the movement
+			Position.X -= newMovement.X;
+		}
+
+		// Check for Y collision
+		Position.Y += newMovement.Y;
+		GameObject yCollision = Collision.HitAnything(this);
+		if (yCollision?.CollisionBlocksMovement == true)
+		{
+			// If we hit something then undo the movement
+			Position.Y -= newMovement.Y;
+		}
 	}
 }

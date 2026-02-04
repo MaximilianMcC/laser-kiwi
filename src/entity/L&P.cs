@@ -2,7 +2,7 @@ using System.Numerics;
 using Raylib_cs;
 
 class LemonAndPaeroa : Sprite
-{	
+{
 	public override void Start()
 	{
 		// Make the b
@@ -14,7 +14,7 @@ class LemonAndPaeroa : Sprite
 	{
 		// Check for if the player collides with us
 		Kiwi player = SceneManager.Scene.Get<Kiwi>();
-		if (Raylib.CheckCollisionRecs(Hitbox, player.Hitbox))
+		if (Collision.Hit(this, player))
 		{
 			Console.WriteLine("drunken");
 			KillMySelf();

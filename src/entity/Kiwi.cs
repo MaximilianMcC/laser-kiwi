@@ -20,7 +20,8 @@ class Kiwi : Sprite
 	{
 		// Move around
 		Vector2 movement = (Input.Get2DMovement() * speed) * Raylib.GetFrameTime();
-		Position += movement;
+		
+		MoveWithCollision(movement);
 		SceneManager.Scene.Camera.FocusOn(Hitbox);
 
 		LaserEyes();
