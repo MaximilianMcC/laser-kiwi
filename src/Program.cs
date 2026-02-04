@@ -5,6 +5,7 @@ class Program
 	public static void Main(string[] args)
 	{
 		State.WindowTitle = "laser kiwi";
+		Raylib.SetConfigFlags(ConfigFlags.ResizableWindow | ConfigFlags.AlwaysRunWindow);
 		Raylib.InitWindow(840, 512, State.WindowTitle);
 
 		SceneManager.Scene = new TestScene();

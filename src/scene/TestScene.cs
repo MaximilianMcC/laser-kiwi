@@ -6,5 +6,6 @@ class TestScene : Scene
 		// GameObjects.Add(new BeeHive());
 		GameObjects.Add(new LemonAndPaeroa());
 		GameObjects.Add(new Grass());
+		GameObjects.Add(new SunAndMoon());
 	}
 }

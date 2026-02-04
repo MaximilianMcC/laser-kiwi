@@ -39,6 +39,18 @@ static class Graphics
 		);
 	}
 
+	public static void DrawRotatedTextureFromCentre(Texture2D texture, Rectangle rectangle, float rotation)
+	{
+		Raylib.DrawTexturePro(
+			texture,
+			GetTextureRectangle(texture),
+			rectangle,
+			rectangle.Size / 2f,
+			rotation,
+			Color.White
+		);
+	}
+
 	public static void DrawCentreText(string text, float fontSize)
 	{
 		Vector2 size = Raylib.MeasureTextEx(Raylib.GetFontDefault(), text, fontSize, fontSize / 10);
