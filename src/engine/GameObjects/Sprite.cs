@@ -8,13 +8,13 @@ class Sprite : GameObject
 	protected void InitSprite(string path, Vector2 size)
 	{
 		texture = AssetManager.LoadTexture(path);
-		Hitbox = new Rectangle(0, 0, size);
+		Size = size;
 	}
 
 	protected void InitSprite(string path)
 	{
 		texture = AssetManager.LoadTexture(path);
-		Hitbox = new Rectangle(0, 0, texture.Dimensions);
+		Size = texture.Dimensions;
 	}
 
 	public override void Draw()

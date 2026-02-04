@@ -7,7 +7,7 @@ class LemonAndPaeroa : Sprite
 	{
 		// Make the b
 		InitSprite("./assets/l&p.png", new Vector2(30, 80));
-		Hitbox.Position = new Vector2(300, -20);
+		Position = new Vector2(300, -20);
 	}
 
 	public override void Update()

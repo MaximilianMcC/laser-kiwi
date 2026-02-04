@@ -20,7 +20,7 @@ class Kiwi : Sprite
 	{
 		// Move around
 		Vector2 movement = (Input.Get2DMovement() * speed) * Raylib.GetFrameTime();
-		Hitbox.Position += movement;
+		Position += movement;
 		SceneManager.Scene.Camera.FocusOn(Hitbox);
 
 		LaserEyes();
@@ -33,7 +33,7 @@ class Kiwi : Sprite
 
 		// Draw the laser
 		Vector2 eyeOrigin = new Vector2(0.88f, 0.6f);
-		Vector2 laserStartPosition = Hitbox.Position + eyeOrigin * Hitbox.Size;
+		Vector2 laserStartPosition = Position + eyeOrigin * Size;
 
 		float wobble = MathF.Sin((float)Raylib.GetTime() * 40f) * 2f;
 		Vector2 laserEndPosition = laserStartPosition + laserAngle * (currentLaserLength + wobble);
@@ -64,7 +64,7 @@ class Kiwi : Sprite
 		if (UsingLaserEyes)
 		{
 			Vector2 eyeOrigin = new Vector2(0.88f, 0.6f);
-			Vector2 eyePosition = Hitbox.Position + eyeOrigin * Hitbox.Size;
+			Vector2 eyePosition = Position + eyeOrigin * Size;
 			laserAngle = Vector2.Normalize(Raylib.GetMousePosition() - eyePosition);
 		}
 	}

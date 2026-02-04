@@ -1,10 +1,11 @@
+using System.Numerics;
 using Raylib_cs;
 
 class GameObject
 {
-	// private GameObject() { }
-
-	public Rectangle Hitbox;
+	public Vector2 Size;
+	public Vector2 Position;
+	public Rectangle Hitbox => new Rectangle(Position, Size);
 
 	public virtual void Start() { }
 	public virtual void Update() { }
