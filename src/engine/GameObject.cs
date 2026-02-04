@@ -34,7 +34,7 @@ class GameObject
 	{
 		// Check for X collision
 		Position.X += newMovement.X;
-		GameObject xCollision = Collision.HitAnything(this);
+		GameObject xCollision = Collision.HitAnythingThatBlocksMovement(this);
 		if (xCollision?.CollisionBlocksMovement == true)
 		{
 			// If we hit something then undo the movement
@@ -43,7 +43,7 @@ class GameObject
 
 		// Check for Y collision
 		Position.Y += newMovement.Y;
-		GameObject yCollision = Collision.HitAnything(this);
+		GameObject yCollision = Collision.HitAnythingThatBlocksMovement(this);
 		if (yCollision?.CollisionBlocksMovement == true)
 		{
 			// If we hit something then undo the movement

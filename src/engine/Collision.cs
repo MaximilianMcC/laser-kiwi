@@ -26,4 +26,23 @@ static class Collision
 		// Didn't hit anything
 		return null;
 	}
+
+	public static GameObject HitAnythingThatBlocksMovement(GameObject target)
+	{
+		// TODO: use .Where(HasCollision)
+		foreach (GameObject victim in SceneManager.Scene.GameObjects)
+		{
+			// Can't hit ourself
+			if (victim == target) continue;
+
+			// Needs to block movement
+			if (victim.CollisionBlocksMovement == false) continue;
+
+			// Check for if we've hit the other thing
+			if (Hit(victim, target)) return victim;
+		}
+
+		// Didn't hit anything
+		return null;
+	}
 }

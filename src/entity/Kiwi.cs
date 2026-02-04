@@ -34,7 +34,7 @@ class Kiwi : Sprite
 		Vector2 movement = (Input.Get2DMovement() * speed) * Raylib.GetFrameTime();
 
 		if (Maths.MovingRight(movement)) facingRight = true;
-		else facingRight = false;
+		if (Maths.MovingLeft(movement)) facingRight = false;
 
 		// Add gravity
 		velocity.Y += gravity * Raylib.GetFrameTime();
