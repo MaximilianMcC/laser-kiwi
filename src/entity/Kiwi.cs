@@ -18,13 +18,18 @@ class Kiwi : Sprite
 
 	public override void Update()
 	{
-		// Move around
-		Vector2 movement = (Input.Get2DMovement() * speed) * Raylib.GetFrameTime();
-		
-		MoveWithCollision(movement);
+		Move();
 		SceneManager.Scene.Camera.FocusOn(Hitbox);
 
 		LaserEyes();
+	}
+
+	public void Move()
+	{
+		// Move around
+		Vector2 movement = (Input.Get2DMovement() * speed) * Raylib.GetFrameTime();
+
+		MoveWithCollision(movement);
 	}
 
 	public override void Draw()

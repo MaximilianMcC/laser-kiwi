@@ -3,6 +3,9 @@ using Raylib_cs;
 
 class LemonAndPaeroa : Sprite
 {
+	//! debug
+	public override bool CollisionBlocksMovement => true;
+
 	public override void Start()
 	{
 		// Make the b
