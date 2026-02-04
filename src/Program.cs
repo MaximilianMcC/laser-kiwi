@@ -4,13 +4,15 @@ class Program
 {
 	public static void Main(string[] args)
 	{
-		Raylib.InitWindow(840, 512, "laser kiwi");
+		State.WindowTitle = "laser kiwi";
+		Raylib.InitWindow(840, 512, State.WindowTitle);
 
 		SceneManager.Scene = new TestScene();
 		SceneManager.Scene.Start();
 
 		while (!Raylib.WindowShouldClose())
 		{
+			State.Update();
 			SceneManager.Scene.Update();
 
 			Raylib.BeginDrawing();

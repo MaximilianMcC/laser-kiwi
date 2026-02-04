@@ -40,6 +40,7 @@ abstract class Scene
 		for (int i = GameObjects.Count - 1; i >= 0 ; i--)
 		{
 			GameObjects[i].Draw();
+			if (State.Debug) GameObjects[i].DrawHitbox();
 		}
 		Camera.End();
 	}

@@ -10,4 +10,7 @@ class Input
 		if (Raylib.IsKeyDown(KeyboardKey.D) || Raylib.IsKeyDown(KeyboardKey.Right)) movement.X++;
 		return movement;
 	}
+
+	public static bool Jumping() => Raylib.IsKeyPressed(KeyboardKey.Space);
+	public static bool Debug() => Raylib.IsKeyPressed(KeyboardKey.F3) || Raylib.IsKeyPressed(KeyboardKey.Grave);
 }

@@ -15,6 +15,12 @@ class GameObject
 	public virtual void Draw() { }
 	public virtual void CleanUp() { }
 
+	public void DrawHitbox()
+	{
+		// TODO: Generate a random color based on the hash
+		Raylib.DrawRectangleLinesEx(Hitbox, 3f, Color.Magenta);
+	}
+
 	protected void KillMySelf() => Destroy();
 	public void Destroy()
 	{
