@@ -11,6 +11,6 @@ class Input
 		return movement;
 	}
 
-	public static bool Jumping() => Raylib.IsKeyDown(KeyboardKey.Space);
+	public static bool Jumping() => Raylib.IsKeyDown(KeyboardKey.Space) || Raylib.IsKeyDown(KeyboardKey.Up);
 	public static bool Debug() => Raylib.IsKeyPressed(KeyboardKey.F3) || Raylib.IsKeyPressed(KeyboardKey.Grave);
 }

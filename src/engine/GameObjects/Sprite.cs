@@ -4,6 +4,7 @@ using Raylib_cs;
 class Sprite : GameObject
 {	
 	private Texture2D texture;
+	protected bool facingRight = true;
 
 	protected void InitSprite(string path, Vector2 size)
 	{
@@ -19,7 +20,7 @@ class Sprite : GameObject
 
 	public override void Draw()
 	{
-		Graphics.DrawTexture(texture, Hitbox);
+		Graphics.DrawTexture(texture, Hitbox, !facingRight);
 	}
 
 	public override void CleanUp()

@@ -9,7 +9,7 @@ class Grass : GameObject
 	public override void Start()
 	{
 		Size = new Vector2(400, 30);
-		Position = new Vector2(-100, 200);
+		Position = new Vector2(-100, 100);
 	}
 
 	public override void Draw()

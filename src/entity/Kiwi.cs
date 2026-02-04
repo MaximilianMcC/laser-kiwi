@@ -5,6 +5,7 @@ class Kiwi : Sprite
 {	
 	private readonly float speed = 300f;
 	private readonly float jumpForce = 600f;
+	private readonly float gravity = 2000f;
 	private Vector2 velocity;
 	private bool onTheGround;
 
@@ -32,13 +33,16 @@ class Kiwi : Sprite
 		// Move around
 		Vector2 movement = (Input.Get2DMovement() * speed) * Raylib.GetFrameTime();
 
+		if (Maths.MovingRight(movement)) facingRight = true;
+		else facingRight = false;
+
 		// Add gravity
-		velocity.Y += 2000f * Raylib.GetFrameTime();
+		velocity.Y += gravity * Raylib.GetFrameTime();
 
 		// Move
 		movement += velocity * Raylib.GetFrameTime();
 		(_, GameObject hitY) = MoveWithCollision(movement);
-		onTheGround = (hitY != null) && (velocity.Y > 0);
+		onTheGround = (hitY != null) && Maths.MovingDownwards(velocity);
 
 		// Check for if we've landed and reset velocity
 		if (onTheGround) velocity.Y = 0f;

@@ -20,11 +20,18 @@ static class Graphics
 		);
 	}
 
-	public static void DrawTexture(Texture2D texture, Rectangle rectangle)
+	public static void DrawTexture(Texture2D texture, Rectangle rectangle, bool flippedX = false)
 	{
+		Rectangle source = GetTextureRectangle(texture);
+		if (flippedX)
+		{
+			source.X += source.Width;
+			source.Width *= -1;
+		}
+
 		Raylib.DrawTexturePro(
 			texture,
-			GetTextureRectangle(texture),
+			source,
 			rectangle,
 			Vector2.Zero,
 			0f,
