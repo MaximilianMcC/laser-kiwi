@@ -30,7 +30,7 @@ class GameObject
 
 	// TODO: Evaluate
 	// TODO: Make it return the new movement vector
-	protected void MoveWithCollision(Vector2 newMovement)
+	protected (GameObject, GameObject) MoveWithCollision(Vector2 newMovement)
 	{
 		// Check for X collision
 		Position.X += newMovement.X;
@@ -49,5 +49,8 @@ class GameObject
 			// If we hit something then undo the movement
 			Position.Y -= newMovement.Y;
 		}
+
+		// Give back the collisions
+		return (xCollision, yCollision);
 	}
 }

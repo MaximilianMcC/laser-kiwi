@@ -4,6 +4,9 @@ using Raylib_cs;
 class Kiwi : Sprite
 {	
 	private readonly float speed = 300f;
+	private readonly float jumpForce = 600f;
+	private Vector2 velocity;
+	private bool onTheGround;
 
 	private readonly float maxLaserLength = 150f;
 	private float currentLaserLength;
@@ -29,7 +32,19 @@ class Kiwi : Sprite
 		// Move around
 		Vector2 movement = (Input.Get2DMovement() * speed) * Raylib.GetFrameTime();
 
-		MoveWithCollision(movement);
+		// Add gravity
+		velocity.Y += 2000f * Raylib.GetFrameTime();
+
+		// Move
+		movement += velocity * Raylib.GetFrameTime();
+		(_, GameObject hitY) = MoveWithCollision(movement);
+		onTheGround = (hitY != null) && (velocity.Y > 0);
+
+		// Check for if we've landed and reset velocity
+		if (onTheGround) velocity.Y = 0f;
+
+		// Jump
+		if (Input.Jumping() && onTheGround) velocity.Y = -jumpForce;
 	}
 
 	public override void Draw()
