@@ -4,6 +4,7 @@ using Raylib_cs;
 class SunAndMoon : GameObject
 {
 	public override bool HasCollision => false;
+	public override bool DrawInWorldSpace => false;
 
 	private Texture2D texture;
 	private float rotation;
@@ -12,7 +13,8 @@ class SunAndMoon : GameObject
 	public override void Start()
 	{
 		texture = AssetManager.LoadTexture("./assets/sun-and-moon.png");
-		Size = new Vector2(Raylib.GetScreenHeight());
+		Size = new Vector2(State.GameSize.Y);
+		Position = State.GameSize / 2f;
 	}
 
 	public override void Draw()

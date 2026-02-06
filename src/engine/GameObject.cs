@@ -10,6 +10,8 @@ class GameObject
 	public virtual bool HasCollision => true;
 	public virtual bool CollisionBlocksMovement => false;
 
+	public virtual bool DrawInWorldSpace => true;
+
 	public virtual void Start() { }
 	public virtual void Update() { }
 	public virtual void Draw() { }
@@ -17,6 +19,9 @@ class GameObject
 
 	public void DrawHitbox()
 	{
+		// If we don't have collision then don't render it
+		if (HasCollision == false) return;
+
 		// TODO: Generate a random color based on the hash
 		Raylib.DrawRectangleLinesEx(Hitbox, 3f, Color.Magenta);
 	}

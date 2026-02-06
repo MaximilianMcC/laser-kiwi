@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using Raylib_cs;
 
 static class SceneManager
@@ -36,11 +37,23 @@ abstract class Scene
 
 	public void Render()
 	{
-		Camera.Begin();
-		for (int i = GameObjects.Count - 1; i >= 0 ; i--)
+		// Segregate the world and screen stuff
+		List<GameObject> worldStuff = GameObjects.Where(gameObject => gameObject.DrawInWorldSpace).ToList();
+		List<GameObject> screenStuff = GameObjects.Where(gameObject => !gameObject.DrawInWorldSpace).ToList();
+
+		// Draw everything not in the world (no camera)
+		for (int i = screenStuff.Count - 1; i >= 0 ; i--)
 		{
-			GameObjects[i].Draw();
-			if (State.Debug) GameObjects[i].DrawHitbox();
+			screenStuff[i].Draw();
+			if (State.Debug) screenStuff[i].DrawHitbox();
+		}
+
+		// Draw everything in the world
+		Camera.Begin();
+		for (int i = worldStuff.Count - 1; i >= 0 ; i--)
+		{
+			worldStuff[i].Draw();
+			if (State.Debug) worldStuff[i].DrawHitbox();
 		}
 		Camera.End();
 	}
