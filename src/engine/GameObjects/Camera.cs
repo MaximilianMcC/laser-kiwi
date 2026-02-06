@@ -17,7 +17,7 @@ class Camera
 		Camera2D camera = new Camera2D()
 		{
 			// TODO: Use 0 offset
-			Offset = Raylib.GetScreenCenter(),
+			Offset = State.GameSize / 2f,
 			Target = Position,
 			Rotation = Rotation,
 			Zoom = 1

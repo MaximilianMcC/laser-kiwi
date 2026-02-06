@@ -3,6 +3,8 @@ using Raylib_cs;
 
 static class Graphics
 {
+	public static Vector2 WindowSize => new Vector2(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
+
 	public static Rectangle GetTextureRectangle(Texture2D texture)
 	{
 		return new Rectangle(0, 0, texture.Dimensions);
@@ -47,6 +49,18 @@ static class Graphics
 			rectangle,
 			rectangle.Size / 2f,
 			rotation,
+			Color.White
+		);
+	}
+
+	public static void DrawRenderTextureOverWholeScreen(RenderTexture2D renderTexture)
+	{
+		Raylib.DrawTexturePro(
+			renderTexture.Texture,
+			new Rectangle(0, 0, renderTexture.Texture.Dimensions * new Vector2(1, -1)),
+			new Rectangle(0, 0, WindowSize),
+			Vector2.Zero,
+			0f,
 			Color.White
 		);
 	}
